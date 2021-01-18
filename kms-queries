@@ -1,0 +1,33 @@
+SELECT eventname, eventsource, resources, COUNT(*)
+FROM cloudtrail_logs000
+WHERE year = '2021'
+        AND useridentity.arn LIKE '%123456789%'
+        GROUP BY eventname, eventsource, resources;
+
+######
+
+SELECT eventname, eventsource, resources, COUNT(*)
+FROM cloudtrail_logs000
+WHERE year = '2021'
+      AND eventname in ('Decrypt')
+      GROUP BY eventname, eventsource, resources;
+
+######
+
+SELECT eventname, eventsource, resources, COUNT(*)
+FROM cloudtrail_logs000
+WHERE year = '2021'
+      AND month = '01'
+      AND eventname in ('Decrypt')
+      AND useridentity.accountID LIKE '%123456789%'
+      GROUP BY eventname, eventsource, resources;
+
+######
+
+SELECT eventname, eventsource, resources, COUNT(*)
+FROM cloudtrail_logs000
+WHERE year = '2021'
+      AND month = '01'
+      AND eventsource in ('kms.amazonaws.com')
+      AND useridentity.accountID LIKE '%123456789%'
+      GROUP BY eventname, eventsource, resources;
