@@ -1,10 +1,10 @@
 # If you want to know, which kms keys were in certain period (for example, in 2021 year)
 # in certain account (for example, 123456789):
-SELECT eventname, eventsource, resources, COUNT(*) # choice needed columns
-FROM cloudtrail_logs000 # data base from S3 bucket cloudtrail_logs000
-WHERE year = '2021' # period - year, month, day, time
-        AND useridentity.arn LIKE '%123456789%' # account's arn
-        GROUP BY eventname, eventsource, resources; # grouping objects
+`SELECT eventname, eventsource, resources, COUNT(*)` # choice needed columns
+`FROM cloudtrail_logs000` # data base from S3 bucket cloudtrail_logs000
+`WHERE year = '2021'` # period - year, month, day, time
+        `AND useridentity.arn LIKE '%123456789%'` # account's arn
+        `GROUP BY eventname, eventsource, resources;` # grouping objects
 
 ######
 
